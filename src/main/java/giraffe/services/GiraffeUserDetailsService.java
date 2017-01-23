@@ -21,11 +21,18 @@ import java.util.Optional;
 public class GiraffeUserDetailsService implements UserDetailsService {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    SocialUserService socialUserService;
+    private SocialUserService socialUserService;
 
+
+    @Autowired
+    public GiraffeUserDetailsService(UserRepository userRepository, SocialUserService socialUserService) {
+
+        this.userRepository = userRepository;
+        this.socialUserService = socialUserService;
+    }
 
     @Override
     public GiraffeUserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

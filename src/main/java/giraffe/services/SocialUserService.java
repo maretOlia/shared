@@ -14,9 +14,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class SocialUserService {
 
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
-    AuthorityRepository authorityRepository;
+    private AuthorityRepository authorityRepository;
 
 
     @Autowired

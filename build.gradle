@@ -27,7 +27,6 @@ repositories {
 
 
 dependencies {
-	//compile('org.springframework.boot:spring-boot-starter')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.security.oauth:spring-security-oauth2:2.0.12.RELEASE')
     compile('com.google.guava:guava:11.0.2')
