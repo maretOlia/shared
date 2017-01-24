@@ -15,7 +15,7 @@ public class User extends GiraffeEntity<User> implements Serializable {
 
     private String login;
 
-    @Column(name = "pass_hash")    //TODO: ignore in JSON
+    @Column(name = "pass_hash", length = 60)    //TODO: ignore in JSON
     private String passwordHash;
 
     @ManyToMany(fetch = FetchType.EAGER)
