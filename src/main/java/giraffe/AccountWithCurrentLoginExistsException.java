@@ -3,8 +3,8 @@ package giraffe;
 import giraffe.domain.GiraffeException;
 
 /**
- * @author Guschcyna Olga
- * @version 1.0.0
+ * @author Olga Gushchyna
+ * @version 0.0.1
  */
 public class AccountWithCurrentLoginExistsException extends GiraffeException {
 
@@ -16,4 +16,5 @@ public class AccountWithCurrentLoginExistsException extends GiraffeException {
     public Integer getErrorCode() {
         return 1100;
     }
+
 }

@@ -6,6 +6,7 @@ import giraffe.repository.AuthorityRepository;
 import giraffe.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Guschcyna Olga
@@ -18,15 +19,14 @@ public class SocialUserService {
 
     private AuthorityRepository authorityRepository;
 
-
     @Autowired
     public SocialUserService(UserRepository userRepository, AuthorityRepository authorityRepository) {
         this.userRepository = userRepository;
         this.authorityRepository = authorityRepository;
     }
 
+    @Transactional
     public User createSocialUser(String socialId, String email, User.SocialProvider socialProvider) {
-
         User socialUser = new User().setLogin(email)
                 .setSocialId(socialId)
                 .setSocialProvider(socialProvider)

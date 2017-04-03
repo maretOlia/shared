@@ -1,17 +1,18 @@
 package giraffe.domain;
 
 import com.google.common.collect.Sets;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Set;
 
 /**
- * @author Guschcyna Olga
- * @version 1.0.0
+ * @author Olga Gushchyna
+ * @version 0.0.1
  */
+@JsonIgnoreProperties(ignoreUnknown = true, value = {"passwordHash"})
 @Entity
-public class User extends GiraffeEntity<User> implements Serializable {
+public class User extends GiraffeEntity<User> {
 
     private String login;
 
@@ -67,7 +68,8 @@ public class User extends GiraffeEntity<User> implements Serializable {
     }
 
 
-    public User() { }
+    public User() {
+    }
 
 
     @Override

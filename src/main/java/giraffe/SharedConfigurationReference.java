@@ -10,8 +10,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- * @author Guschcyna Olga
- * @version 1.0.0
+ * @author Olga Gushchyna
+ * @version 0.0.1
  */
 @Configuration
 @ComponentScan("giraffe")

@@ -7,8 +7,8 @@ import java.util.Set;
 
 
 /**
- * @author Guschcyna Olga
- * @version 1.0.0
+ * @author Olga Gushchyna
+ * @version 0.0.1
  */
 public class GiraffeUserDetails implements UserDetails {
 

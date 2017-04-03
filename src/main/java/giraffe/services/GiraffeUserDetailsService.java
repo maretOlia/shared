@@ -37,20 +37,16 @@ public class GiraffeUserDetailsService implements UserDetailsService {
     @Override
     public GiraffeUserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User account = userRepository.findByLoginAndStatus(username,  GiraffeEntity.Status.ACTIVE);
-
         if (account == null)
             throw new UsernameNotFoundException("Account with login: " + username + " not found");
 
         return new GiraffeUserDetails(account.getLogin(), account.getPasswordHash(), account.getAuthorities(), account.getUuid(), false, false, false, true);
     }
 
-
     public GiraffeUserDetails loadOrCreateSocialUser(String socialId, String email, User.SocialProvider socialProvider) throws GiraffeException.UnableToValidateSocialUserInformation {
-
         if (socialId == null) throw new GiraffeException.UnableToValidateSocialUserInformation();
 
         User account = userRepository.findBySocialIdAndSocialProviderAndStatus(socialId, socialProvider, GiraffeEntity.Status.ACTIVE);
-
         if (account == null) {
             account = socialUserService.createSocialUser(socialId, email, socialProvider);
         }

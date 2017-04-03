@@ -6,8 +6,8 @@ import org.springframework.security.core.GrantedAuthority;
 import java.util.Collection;
 
 /**
- * @author Guschcyna Olga
- * @version 1.0.0
+ * @author Olga Gushchyna
+ * @version 0.0.1
  */
 public class GiraffeAuthentication implements Authentication {
 
@@ -15,11 +15,9 @@ public class GiraffeAuthentication implements Authentication {
 
     private boolean authenticated = true;
 
-
     public GiraffeAuthentication(GiraffeUserDetails user) {
         this.userDetails = user;
     }
-
 
     @Override
     public String getName() {

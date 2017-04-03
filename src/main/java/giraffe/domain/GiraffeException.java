@@ -1,8 +1,16 @@
 package giraffe.domain;
 
 /**
- * @author Guschcyna Olga
- * @version 1.0.0
+ * Custom Giraffe exceptions codes:
+ * <ul>
+ * <li>1100 - 1190: Security issues with authorization/authentication</li>
+ * <li>1200 - 1290: User management</li>
+ * <li>1300 - 1390: Simple Task Management</li>
+ * <li>1400 - 1490: Complex Task Management</li> *
+ * </ul>
+ *
+ * @author Olga Gushchyna
+ * @version 0.0.1
  */
 abstract public class GiraffeException extends Exception {
 
@@ -21,7 +29,7 @@ abstract public class GiraffeException extends Exception {
 
         @Override
         public Integer getErrorCode() {
-            return 1300;
+            return 1100;
         }
     }
 

@@ -7,8 +7,8 @@ import javax.persistence.*;
 import java.util.Set;
 
 /**
- * @author Guschcyna Olga
- * @version 1.0.0
+ * @author Olga Gushchyna
+ * @version 0.0.1
  */
 @Entity
 @Table(name = "authority")
@@ -18,26 +18,10 @@ public class GiraffeAuthority extends GiraffeEntity<GiraffeAuthority> implements
     @Enumerated
     private Role role;
 
-
     @ManyToMany
     private Set<User> users = Sets.newHashSet();
 
-
     public GiraffeAuthority() {
-    }
-
-    public enum Role {
-        ADMIN("ROLE_ADMIN"), USER("ROLE_USER"), ANONIMOUS("ROLE_ANONYMOUS");
-
-        private String value;
-
-        Role(final String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
     }
 
     @Override
@@ -79,7 +63,6 @@ public class GiraffeAuthority extends GiraffeEntity<GiraffeAuthority> implements
         GiraffeAuthority that = (GiraffeAuthority) o;
 
         return role == that.role;
-
     }
 
     @Override
@@ -87,6 +70,20 @@ public class GiraffeAuthority extends GiraffeEntity<GiraffeAuthority> implements
         int result = super.hashCode();
         result = 31 * result + role.hashCode();
         return result;
+    }
+
+    public enum Role {
+        ADMIN("ROLE_ADMIN"), USER("ROLE_USER"), ANONIMOUS("ROLE_ANONYMOUS");
+
+        private String value;
+
+        Role(final String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
     }
 
 }

@@ -12,8 +12,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 /**
  * Handle errors from Ajax requests
  *
- * @author Guschcyna Olga
- * @version 1.0.0
+ * @author Olga Gushchyna
+ * @version 0.0.1
  */
 @EnableWebMvc
 @ControllerAdvice
@@ -32,4 +32,5 @@ public class JsonExceptionHandler {
 
         return errorResponse;
     }
+
 }

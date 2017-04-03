@@ -4,24 +4,24 @@ import javax.persistence.Column;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import java.util.Objects;
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
- * @author Guschcyna Olga
- * @version 1.0.0
+ * @author Olga Gushchyna
+ * @version 0.0.1
  */
 @MappedSuperclass
-public abstract class GiraffeEntity<T extends GiraffeEntity> {
+abstract public class GiraffeEntity<T extends GiraffeEntity> implements Serializable {
 
     @Id
     @Column(nullable = false)
     protected String uuid = UUID.randomUUID().toString();
 
     @Column(nullable = false)
-    protected Long timeCreated = System.currentTimeMillis();
+    protected Long timeCreated = System.currentTimeMillis(); // UTC time
 
-    protected Long timeDeleted;
+    protected Long timeDeleted; // UTC time
 
     @Column(nullable = false)
     @Enumerated
@@ -29,7 +29,7 @@ public abstract class GiraffeEntity<T extends GiraffeEntity> {
 
 
     public enum Status {
-        DELETED(0),  ACTIVE(1);
+        DELETED(0), ACTIVE(1);
 
         private int value;
 
@@ -41,7 +41,6 @@ public abstract class GiraffeEntity<T extends GiraffeEntity> {
             return value;
         }
     }
-
 
     public String getUuid() {
         return uuid;
@@ -74,17 +73,24 @@ public abstract class GiraffeEntity<T extends GiraffeEntity> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        GiraffeEntity that = (GiraffeEntity) o;
-        return Objects.equals(uuid, that.uuid) &&
-                Objects.equals(status, that.status) &&
-                Objects.equals(timeCreated, that.timeCreated) &&
-                Objects.equals(timeDeleted, that.timeDeleted);
+        if (!(o instanceof GiraffeEntity)) return false;
+
+        GiraffeEntity<?> that = (GiraffeEntity<?>) o;
+
+        if (!uuid.equals(that.uuid)) return false;
+        if (!timeCreated.equals(that.timeCreated)) return false;
+        if (timeDeleted != null ? !timeDeleted.equals(that.timeDeleted) : that.timeDeleted != null) return false;
+
+        return status == that.status;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uuid, status, timeCreated, timeDeleted);
+        int result = uuid.hashCode();
+        result = 31 * result + timeCreated.hashCode();
+        result = 31 * result + (timeDeleted != null ? timeDeleted.hashCode() : 0);
+        result = 31 * result + status.hashCode();
+        return result;
     }
 
 }
