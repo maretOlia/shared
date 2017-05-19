@@ -5,8 +5,9 @@ package giraffe.domain;
  * <ul>
  * <li>1100 - 1190: Security issues with authorization/authentication</li>
  * <li>1200 - 1290: User management</li>
- * <li>1300 - 1390: Simple Task Management</li>
- * <li>1400 - 1490: Complex Task Management</li> *
+ * <li>1300 - 1390: General Activity Management</li>
+ * <li>1400 - 1490: Simple Task Management</li>
+ * <li>1500 - 1590: Complex Task Management</li> *
  * </ul>
  *
  * @author Olga Gushchyna

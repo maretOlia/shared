@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
  * Handle errors from Ajax requests
@@ -15,9 +14,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  * @author Olga Gushchyna
  * @version 0.0.1
  */
-@EnableWebMvc
 @ControllerAdvice
-@Order(1)
+@Order(2)
 public class JsonExceptionHandler {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
